@@ -8,7 +8,7 @@ by *Richard Acs, Ali Ibrahim, Hanqi Zhuang, and Laurent M. Chérubin.*
 
 ---
 
-## 📘 Overview
+## Overview
 
 Marine Passive Acoustic Monitoring (PAM) enables long-term, non-invasive biodiversity observation but faces key challenges — overlapping sources, high noise, and limited labeled data.  
 This framework introduces a **contrastive learning pipeline** tailored for noisy marine environments, capable of unsupervised discovery of biotic and anthropogenic sound sources and comparison across sites and years.
@@ -17,7 +17,7 @@ The approach outperforms classical cepstral and generative baselines in **cluste
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - **Unsupervised discovery** of fish calls and anthropogenic signals in reef soundscapes  
 - **Teacher-guided multi-positive SimCLR** with local–global invariance and VICReg regularization  
@@ -27,7 +27,7 @@ The approach outperforms classical cepstral and generative baselines in **cluste
 
 ---
 
-## 🧠 Framework Overview
+## Framework Overview
 
 ### Architecture
 - **Encoder:** ResNet-18 (1-channel)  
@@ -47,7 +47,7 @@ with weights: **α = 1.0, β = 0.1, γ = 0.1**
 
 ---
 
-## 🔉 Dataset
+## Dataset
 
 Recordings were collected from **seven Caribbean spawning aggregation sites (2017–2024)**, including:
 
@@ -61,7 +61,7 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 ---
 
-## ⚙️ Preprocessing & Augmentations
+## Preprocessing & Augmentations
 
 - **Mono conversion & amplitude normalization** to [−1, 1]  
 - **Event-centric cropping:** 2 global (256 frames) + 2 local (96 frames) crops  
@@ -73,7 +73,7 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 ---
 
-## 🧩 Clustering & Evaluation
+## Clustering & Evaluation
 
 | Algorithm | Parameters | Notes |
 |------------|-------------|-------|
@@ -88,7 +88,7 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 ---
 
-## 📊 Results Summary
+## Results Summary
 
 | Method | ARI | AMI | Hungarian | Silhouette | DBI | CH |
 |--------|------|------|------------|-------------|------|------|
@@ -100,7 +100,7 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 ---
 
-## 🐠 Acoustic Signature Discovery
+## Acoustic Signature Discovery
 
 Across Caribbean reef sites, the framework identified **recurring call signatures**, e.g.:
 
@@ -116,7 +116,7 @@ See **Appendix A** for the full call signature dictionary.
 
 ---
 
-## 🧰 Implementation
+## Implementation
 
 **Environment:**
 - Python **3.11**  
@@ -132,93 +132,41 @@ See **Appendix A** for the full call signature dictionary.
 
 ---
 
-## 📦 Repository Structure
+## Repository Structure
 
+All benchmarking methods and the main SimCLR model are contained in their separate 
+.ipynb files, each containing the model code, training/testing runner, and code to generate 
+a report file with clustering UMAP and metrics. The files below represent the following methods:
 ~~~text
-├── data/                  # Preprocessed spectrograms and metadata
-├── models/                # Encoder, projector, and teacher checkpoints
-├── src/
-│   ├── preprocess.py      # Audio normalization and spectrogram creation
-│   ├── simclr_train.py    # Contrastive training script
-│   ├── clustering.py      # Clustering and evaluation
-│   └── utils/             # Augmentations, metrics, visualization
-├── notebooks/             # Example analysis and visualization notebooks
-├── results/
-│   ├── metrics/           # Clustering metrics (ARI, AMI, etc.)
-│   └── figures/           # UMAP, signature gallery
-├── configs/
-│   └── pam.yaml           # Example training configuration
-└── README.md
+
+GTCC+MFCC          GTCC+MFCC.ipynb
+Log-Mel + PCA      Spectrogram + PCA.ipynb
+CNN Latent Space   FADAR_Embeddings.ipynb
+CNN-SupCon         CNN SupCon.ipynb
+VAE + GMM          VAE+GMM.ipynb
+SimCLR (main)      SimCLR(main).ipynb
+
 ~~~
 
 ---
 
-## 🧭 Quick Start
+## Data Availability
 
-### 1) Environment
-~~~bash
-conda create -n pam python=3.11 -y
-conda activate pam
-pip install -r requirements.txt
-~~~
-
-### 2) Preprocess audio → spectrograms
-~~~bash
-python src/preprocess.py \
-  --input ./raw_audio \
-  --output ./data/spectrograms \
-  --sr 10000 --mels 128 --fmax 5000
-~~~
-
-### 3) Train SimCLR
-~~~bash
-python src/simclr_train.py \
-  --config configs/pam.yaml \
-  --data ./data/spectrograms \
-  --outdir ./models
-~~~
-
-### 4) Embed + Cluster
-~~~bash
-# (A) Save embeddings
-python src/simclr_train.py --export-embeddings \
-  --checkpoint ./models/simclr_best.pt \
-  --data ./data/spectrograms \
-  --embeddings ./models/simclr_embeddings.npy
-
-# (B) Cluster embeddings
-python src/clustering.py \
-  --embeddings ./models/simclr_embeddings.npy \
-  --method gmm --k 60 \
-  --out ./results/metrics
-~~~
-
-### 5) Visualize
-~~~bash
-jupyter notebook notebooks/analysis.ipynb
-~~~
-
----
-
-## 💾 Data & Code Availability
-
-- **Code:** https://github.com/racs2019  
 - **Pre-converted spectrograms & metadata:** available upon reasonable request  
   *(raw PAM recordings subject to Harbor Branch Oceanographic Institute policy)*
 
 ---
 
-## 🧑‍🔬 Citation
+## Citation
 
 If you use this repository, please cite:
 
 > **Acs, R., Ibrahim, A., Zhuang, H., & Chérubin, L. M. (2025).**  
 > *Contrastive Learning for Passive Acoustic Monitoring: A Framework for Sound Sources Discovery and Cross-Site Comparison in Marine Soundscapes.*  
-> Manuscript. (Update with DOI/journal when available.)
+> Manuscript. (Under review, DOI will be added when available)
 
 ---
 
-## 📜 License
+## License
 
 This project is released under the **MIT License**.  
-See `LICENSE` for details.
