@@ -484,7 +484,7 @@ def train_simclr_vanilla_pamfair(
 # ----------------------------
 if __name__ == "__main__":
     train_simclr_vanilla_pamfair(
-        audio_dir=r"C:\Users\racs2019\Documents\SimClr\train_preprocessed",  # <-- folder with .npy segments
+        audio_dir=r"C:\Users\Documents\SimClr\train_preprocessed",  # <-- folder with .npy segments
         epochs=50,
         batch_size=256,
         lr=3e-4,
@@ -493,7 +493,7 @@ if __name__ == "__main__":
         accum_steps=2,
         warmup_epochs=10,
         num_workers=8,
-        save_path="vanilla_simclr_pamfair.pth",
+        save_path="vanilla_simclr.pth",
         train_fraction=1,   # set 1.0 for full run
         save_every=5,
         # crop settings aligned with PAM
@@ -504,4 +504,5 @@ if __name__ == "__main__":
         base_mel=(64, 1024, 512),
         view_mel=(128, 2048, 256),
     )
+
 
