@@ -1,12 +1,4 @@
-# === Vanilla SimCLR (reef acoustics) — PAM-MATCHED CROPS + SAME AUGS + FAIR OPTIM ==========
-# Goal: clean ablation vs PAM-SimCLR
-# - Same data representation: loads PAM-preprocessed .npy segments (2s @ 16kHz)
-# - Same crop mechanics as PAM: energy-center computed on base mel (64,1024,512) + jitter
-# - Vanilla representation: SINGLE mel config for actual views (no multi-scale mel)
-# - Same augmentation operator as PAM: notch/shift/noise/time-crop/time/freq mask (keep_length=True)
-# - Same optimizer mechanics option: warmup+cosine + optional grad accumulation + optional grad clip
-# - Prints only per epoch; saves every N epochs and final
-# - Robust to bad .npy (logs and retries)
+# === Vanilla SimCLR (reef acoustics) — PAM-MATCHED CROPS + SAME AUGS ==========
 
 import os, math, random, time
 import numpy as np
@@ -512,3 +504,4 @@ if __name__ == "__main__":
         base_mel=(64, 1024, 512),
         view_mel=(128, 2048, 256),
     )
+
