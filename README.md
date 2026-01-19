@@ -96,7 +96,7 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 | CNN SupCon | **0.372** | **0.396** | **0.646** | 0.302 | 1.18 | 29,187 |
 | **SimCLR (Ours)** | 0.070 | 0.121 | 0.317 | **0.220** | **1.28** | **16,200** |
 
-> **Takeaway:** SimCLR achieves the best **unsupervised** cluster structure and ecological interpretability.
+> SimCLR achieves the best **unsupervised** cluster structure.
 
 ---
 
