@@ -13,7 +13,7 @@ by *Richard Acs, Ali Ibrahim, Hanqi Zhuang, and Laurent M. Chérubin.*
 Marine Passive Acoustic Monitoring (PAM) enables long-term, non-invasive biodiversity observation but faces key challenges — overlapping sources, high noise, and limited labeled data.  
 This framework introduces a **contrastive learning pipeline** tailored for noisy marine environments, capable of unsupervised discovery of biotic and anthropogenic sound sources and comparison across sites and years.
 
-The approach outperforms classical cepstral and generative baselines in **clustering coherence** and **ecological interpretability**, while requiring **no manual annotations**.
+The approach outperforms classical cepstral and generative baselines in **clustering coherence** and **acoustic pattern interpretability**, while requiring **no manual annotations**.
 
 ---
 
@@ -144,7 +144,8 @@ Log-Mel + PCA      Spectrogram + PCA.ipynb
 CNN Latent Space   FADAR_Embeddings.ipynb
 CNN-SupCon         CNN SupCon.ipynb
 VAE + GMM          VAE+GMM.ipynb
-SimCLR (main)      SimCLR(main).ipynb
+PAM-SimCLR         SimCLR(main).ipynb
+Vanilla SimCLR     Vanilla_SimCLR.py
 
 ~~~
 
