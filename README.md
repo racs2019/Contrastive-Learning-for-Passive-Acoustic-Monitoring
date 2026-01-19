@@ -152,21 +152,7 @@ SimCLR (main)      SimCLR(main).ipynb
 
 ## Data Availability
 
-Representative subsets of the passive acoustic datasets used in this study are provided below for validation and reproducibility.  
-Full datasets (~1.5 TB) are maintained by the Harbor Branch Oceanographic Institute and available upon reasonable request (contact: lcherubin@fau.edu).
-
-### Training Dataset
-[balanced_dataset_new.zip](https://www.dropbox.com/scl/fi/gxf8ad64bddftayqmvnsd/balanced_dataset_new.zip?rlkey=z3fny2m1lqif2sv2g58szrckd&dl=0)
-
-### Individual Location Datasets
-- [Xcalak](https://www.dropbox.com/scl/fi/86v1rfoyzxdkf7azuth50/Xcalak-Comparison.zip?rlkey=95a4ufsdvr9jq616eipebyef8&dl=0)  
-- [PR_BDS](https://www.dropbox.com/scl/fi/6so49qusnh7gt5ra43d6k/PR_Comparison.zip?rlkey=azh623w2y0db4q1zhi4o4fzoy&dl=0)  
-- [PR_ALS](https://www.dropbox.com/scl/fi/8f7qxhc25mhtuxyozxyn8/PR_ALS_DEEP_Comparison.zip?rlkey=8l1rne1fb9iho0vb00hf0pfaq&dl=0)  
-- [San Juan](https://www.dropbox.com/scl/fi/306e8mkzyfqfipzpdg8k2/MX-SJ-2022-01_03.zip?rlkey=z9uw67eq7ji52f2ide7ad2d0b&dl=0)  
-- [Punta Allen](https://www.dropbox.com/scl/fi/akph4bn88leig2gimva2r/MX-PA-2022-01_03.zip?rlkey=sixpvna6u47ckao72str2du7z&dl=0)  
-- [Mona](https://www.dropbox.com/scl/fi/xhf1atw9vvgw3l5qkn94a/Mona-Comparison.zip?rlkey=uah6angm37u1ctuhd9x6znflw&dl=0)  
-- [Saint Thomas](https://www.dropbox.com/scl/fi/0jyv3fimbaloa8ic7uepf/GB_Comparison.zip?rlkey=vu55fndz58rkdjl4bz73xnrw4&dl=0)
-
+Training and test sets, as well as preprocessed subsets of the passive acoustic datasets used in this study are provided in the Zenodo repository linked below:
 
 ---
 
