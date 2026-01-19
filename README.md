@@ -11,28 +11,28 @@ by *Richard Acs, Ali Ibrahim, Hanqi Zhuang, and Laurent M. Chérubin.*
 ## Overview
 
 Marine Passive Acoustic Monitoring (PAM) enables long-term, non-invasive biodiversity observation but faces key challenges — overlapping sources, high noise, and limited labeled data.  
-This framework introduces a **contrastive learning pipeline** tailored for noisy marine environments, capable of unsupervised discovery of biotic and anthropogenic sound sources and comparison across sites and years.
+This framework introduces a **domain-adapted contrastive learning pipeline** tailored for noisy marine environments, enabling **unsupervised organization of acoustic recordings**, discovery of recurring acoustic patterns, and comparison across sites and years.
 
-The approach outperforms classical cepstral and generative baselines in **clustering coherence** and **acoustic pattern interpretability**, while requiring **no manual annotations**.
+The approach produces embeddings with **strong intrinsic cluster structure** and supports exploratory analysis of biological and anthropogenic sound sources, while requiring **no manual annotations**.
 
 ---
 
 ## Key Features
 
-- **Unsupervised discovery** of fish calls and anthropogenic signals in reef soundscapes  
+- **Unsupervised discovery** of recurring biological and anthropogenic acoustic patterns in reef soundscapes  
 - **Teacher-guided multi-positive SimCLR** with local–global invariance and VICReg regularization  
 - **Optimized augmentations** for underwater acoustics (spectral notch, frequency masking, noise, shifts)  
-- **Cross-site generalization** across 10+ Caribbean reef monitoring sites  
-- **Contrastive embeddings** that support downstream clustering, call signature discovery, and ecological interpretation  
+- **Cross-site comparison** across Caribbean reef monitoring sites and years (7 core sites; additional sites included in downstream analysis)  
+- **Contrastive embeddings** that support downstream clustering, acoustic signature discovery, and exploratory ecological interpretation  
 
 ---
 
 ## Framework Overview
 
 ### Architecture
-- **Encoder:** ResNet-18 (1-channel)  
+- **Encoder:** ResNet-18 (1-channel log-Mel spectrogram input)  
 - **Projection Head:** 512 → 256 → 128 (BN–ReLU–ℓ2)  
-- **Predictor (SimSiam):** 128 → 256 → 128  
+- **Predictor (SimSiam-style):** 128 → 256 → 128 (used for auxiliary local–global invariance)  
 - **Teacher Model:** EMA (momentum 0.99 → 0.9995)  
 - **Feature Bank:** FIFO queue (size 8,192)
 
@@ -49,7 +49,7 @@ with weights: **α = 1.0, β = 0.1, γ = 0.1**
 
 ## Dataset
 
-Recordings were collected from **seven Caribbean spawning aggregation sites (2017–2024)**, including:
+Recordings were collected from **seven core Caribbean spawning aggregation sites (2017–2024)**, with additional sites included during downstream clustering analysis, including:
 
 | Location | Dominant Species | # of Recordings |
 |-----------|------------------|-----------------|
@@ -77,10 +77,10 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 | Algorithm | Parameters | Notes |
 |------------|-------------|-------|
-| **K-Means** | k = 6–60 | Fast, interpretable |
-| **GMM** | full covariance | Best balance of cohesion & separation |
-| **DBSCAN/HDBSCAN** | ε = 0.5, min_samples = 10 | Adaptive cluster counts |
-| **Spectral Clustering** | 10-NN graph | Good for complex manifolds |
+| **K-Means** | k = 6 (label agreement) or k = 60 (intrinsic structure) | Fast, interpretable |
+| **GMM** | full covariance | Comparable to K-Means; used for acoustic signature discovery |
+| **DBSCAN/HDBSCAN** | adaptive | Often returns few clusters in continuous manifolds |
+| **Spectral Clustering** | 10-NN graph | Moderate performance |
 
 ### Evaluation Metrics
 - **External:** Adjusted Rand Index (ARI), Adjusted Mutual Information (AMI), Hungarian Accuracy  
@@ -94,25 +94,25 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 |--------|------|------|------------|-------------|------|------|
 | GTCC + MFCC | 0.089 | 0.140 | 0.333 | 0.114 | 2.02 | 422 |
 | CNN SupCon | **0.372** | **0.396** | **0.646** | 0.302 | 1.18 | 29,187 |
-| **SimCLR (Ours)** | 0.070 | 0.121 | 0.317 | **0.220** | **1.28** | **16,200** |
+| **PAM-SimCLR (Ours)** | 0.070 | 0.121 | 0.317 | **0.220** | **1.28** | **16,200** |
 
-> SimCLR achieves the best **unsupervised** cluster structure.
+> PAM-SimCLR achieves the best **intrinsic cluster structure** among unsupervised methods, while CNN-SupCon maximizes agreement with coarse labels.
 
 ---
 
 ## Acoustic Signature Discovery
 
-Across Caribbean reef sites, the framework identified **recurring call signatures**, e.g.:
+Across Caribbean reef sites, the framework identified **recurring acoustic patterns**, e.g.:
 
 | Cluster ID | Sites | Frequency (Hz) | Notes |
 |-------------|-------|----------------|-------|
 | 6 | RHB | 200–800 | Red hind pulse trains |
-| 14 | BDS | 200–600 | Marine mammal tones |
+| 14 | BDS | 200–600 | Marine mammal calls |
 | 16 | Xcalak, Punta Allen | 0–600 | Toadfish harmonic calls |
-| 19 | GB, ALS | 0–100 | Boat noise |
-| 33 | Multi-site | Full (0–800) | Biotic narrowband pulse |
+| 19 | Multi-site | 0–100 | Vessel noise |
+| 33 | Multi-site | Full (0–800) | Narrowband biotic pulses |
 
-See **Appendix A** for the full call signature dictionary.
+See **Appendix A** for the full acoustic pattern dictionary.
 
 ---
 
@@ -169,4 +169,4 @@ If you use this repository, please cite:
 
 ## License
 
-This project is released under the **MIT License**.  
+This project is released under the **MIT License**.
