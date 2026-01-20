@@ -29,6 +29,8 @@ The approach produces embeddings with **strong intrinsic cluster structure** and
 
 ## Framework Overview
 
+<img width="1935" height="1382" alt="newfig3" src="https://github.com/user-attachments/assets/cace26fb-5970-471f-b4cd-202d0c40f2f5" />
+
 ### Architecture
 - **Encoder:** ResNet-18 (1-channel log-Mel spectrogram input)  
 - **Projection Head:** 512 → 256 → 128 (BN–ReLU–ℓ2)  
@@ -69,7 +71,9 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
   - Time/frequency masking (SpecAugment)  
   - Spectral notch dropout  
   - Temporal shift/truncation (≤ 12%)  
-  - Gaussian noise (σ = 0.01)  
+  - Gaussian noise (σ = 0.01)
+
+
 
 ---
 
@@ -113,6 +117,8 @@ Across Caribbean reef sites, the framework identified **recurring acoustic patte
 | 33 | Multi-site | Full (0–800) | Narrowband biotic pulses |
 
 See **Appendix A** for the full acoustic pattern dictionary.
+
+<img width="2015" height="1385" alt="newfig7 (1)" src="https://github.com/user-attachments/assets/2e28e33d-c6af-4130-ba6d-0158c9c68f6f" />
 
 ---
 
