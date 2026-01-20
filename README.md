@@ -10,7 +10,7 @@ by *Richard Acs, Ali Ibrahim, Hanqi Zhuang, and Laurent M. Chérubin.*
 
 ## Overview
 
-Marine Passive Acoustic Monitoring (PAM) enables long-term, non-invasive biodiversity observation but faces key challenges — overlapping sources, high noise, and limited labeled data.  
+Marine Passive Acoustic Monitoring (PAM) enables long-term, non-invasive biodiversity observation but faces key challenges, including overlapping sources, high noise, and limited labeled data.  
 This framework introduces a **domain-adapted contrastive learning pipeline** tailored for noisy marine environments, enabling **unsupervised organization of acoustic recordings**, discovery of recurring acoustic patterns, and comparison across sites and years.
 
 The approach produces embeddings with **strong intrinsic cluster structure** and supports exploratory analysis of biological and anthropogenic sound sources, while requiring **no manual annotations**.
