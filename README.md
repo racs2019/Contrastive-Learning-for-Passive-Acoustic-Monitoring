@@ -136,7 +136,9 @@ See **Appendix A** for the full acoustic pattern dictionary.
 
 All benchmarking methods and the main SimCLR model are contained in their separate 
 .ipynb files, each containing the model code, training/testing runner, and code to generate 
-a report file with clustering UMAP and metrics. The files below represent the following methods:
+a report file with clustering UMAP and metrics. A final file (SimCLR_eval.py) includes a clean
+evaluation script used to asess all SimCLR variants on the testing set for quantitative metrics.
+The files below represent the following methods:
 ~~~text
 
 GTCC+MFCC          GTCC+MFCC.ipynb
@@ -146,6 +148,7 @@ CNN-SupCon         CNN SupCon.ipynb
 VAE + GMM          VAE+GMM.ipynb
 PAM-SimCLR         SimCLR(main).ipynb
 Vanilla SimCLR     Vanilla_SimCLR.py
+SimClR evaluation  SimCLR_eval.py
 
 ~~~
 
