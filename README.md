@@ -102,6 +102,8 @@ Each 20 s clip is segmented into 2 s windows, downsampled to **10 kHz**, and con
 
 > PAM-SimCLR achieves the best **intrinsic cluster structure** among unsupervised methods, while CNN-SupCon maximizes agreement with coarse labels.
 
+<img width="2207" height="910" alt="newfig5 (2)" src="https://github.com/user-attachments/assets/8442fb23-b98c-4f68-a1d2-da331cc677cd" />
+
 ---
 
 ## Acoustic Signature Discovery
