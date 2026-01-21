@@ -165,6 +165,7 @@ SimClR evaluation  SimCLR_eval.py
 ## Data Availability
 
 Training and test sets, as well as preprocessed subsets of the passive acoustic datasets used in this study are provided in the Zenodo repository linked below:
+[https://osf.io/rj4cn/overview?view_only=c86b663c172840bba9238feeb98f31e1](https://doi.org/10.17605/OSF.IO/RJ4CN)
 
 ---
 
