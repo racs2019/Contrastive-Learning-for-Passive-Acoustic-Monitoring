@@ -185,8 +185,10 @@ Evaluation           SimCLR_eval.py
 
 ## Data Availability
 
-Training and test sets, as well as **representative preprocessed subsets** of the passive
-acoustic datasets used in this study, are provided via the OSF repository:
+Training and test sets, as well as representative  subsets of the passive
+acoustic datasets used in this study, are provided via the OSF repository.
+All data is provided after FADAR classification for reproducibility and 
+significant reduction of uninformative noise samples:
 
 https://doi.org/10.17605/OSF.IO/RJ4CN
 
