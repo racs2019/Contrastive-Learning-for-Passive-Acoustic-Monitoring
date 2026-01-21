@@ -1,0 +1,29 @@
+# Core numerical stack
+numpy>=1.23
+scipy>=1.9
+
+# Deep learning
+torch>=2.0
+torchaudio>=2.0
+torchvision>=0.15
+
+# Audio processing
+librosa>=0.10
+soundfile>=0.12
+
+# Clustering & metrics
+scikit-learn>=1.2
+hdbscan>=0.8
+
+# Dimensionality reduction & visualization
+umap-learn>=0.5
+matplotlib>=3.7
+plotly>=5.15
+
+# Utilities
+tqdm>=4.65
+pandas>=1.5
+
+# Optional (used in some notebooks)
+ipython>=8.0
+jupyter>=1.0
