@@ -1,4 +1,4 @@
-# ===== Unsupervised Report (NO UMAP) — Vanilla SimCLR checkpoints + 10kHz data =====
+# ===== Unsupervised Report (NO UMAP) — Vanilla SimCLR checkpoints + 10kHz data ===== 
 
 import os
 import math, time, contextlib
@@ -541,3 +541,4 @@ if __name__ == "__main__":
         proj_dim=128,
         repr_mode="backbone",
     )
+
